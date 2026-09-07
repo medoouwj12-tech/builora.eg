@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+    <linearGradient id="gradDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#1e3a8a" />
+    </linearGradient>
+  </defs>
+  <!-- Background icon pill -->
+  <rect width="64" height="64" rx="16" fill="#070B14" />
+  <rect x="2" y="2" width="60" height="60" rx="14" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.3" />
+  
+  <!-- Stylized isometric building towers forming the B structure -->
+  <path d="M18 48V26L24 22V48H18Z" fill="url(#gradDark)" />
+  <path d="M26 48V16L34 10L42 16V48H34V20L26 26V48Z" fill="url(#grad1)" />
+  
+  <!-- Upper B curve & code node -->
+  <path d="M34 18C42 18 47 22 47 28C47 32 44 35 38 36C46 37 49 41 49 46C49 51 43 54 34 54V48C39 48 43 47 43 44C43 40 38 39 34 39V33C38 33 41 32 41 28C41 24 38 23 34 23V18Z" fill="url(#grad1)" fill-opacity="0.9" />
+  
+  <!-- Micro code glyph inside curve -->
+  <circle cx="41" cy="27" r="1.5" fill="#00f2fe" />
+  <path d="M40 43L42 45L40 47" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

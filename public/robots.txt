@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://buildora.net/sitemap.xml
