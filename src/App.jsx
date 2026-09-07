@@ -17,9 +17,11 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import ConsultationModal from './components/ConsultationModal';
+import InstallAppPrompt from './components/InstallAppPrompt';
 
 function MainLayout() {
   const [consultationOpen, setConsultationOpen] = useState(false);
+  const [installModalOpen, setInstallModalOpen] = useState(false);
   const [preselectedService, setPreselectedService] = useState('');
   const [prefilledReference, setPrefilledReference] = useState('');
 
@@ -44,8 +46,11 @@ function MainLayout() {
       {/* Interactive Ambient Cyber Background */}
       <BackgroundEffect />
 
-      {/* Sticky Navigation with Language Toggle */}
-      <Navbar onOpenConsultation={() => setConsultationOpen(true)} />
+      {/* Sticky Navigation with Language Toggle & App Modal Trigger */}
+      <Navbar 
+        onOpenConsultation={() => setConsultationOpen(true)} 
+        onOpenInstallModal={() => setInstallModalOpen(true)} 
+      />
 
       {/* Main Content Flow */}
       <main className="relative z-10">
@@ -99,6 +104,12 @@ function MainLayout() {
       <ConsultationModal 
         isOpen={consultationOpen} 
         onClose={() => setConsultationOpen(false)} 
+      />
+
+      {/* Mobile App & PWA Install Prompt & Modal */}
+      <InstallAppPrompt 
+        isOpen={installModalOpen} 
+        onClose={() => setInstallModalOpen(false)} 
       />
     </div>
   );

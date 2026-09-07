@@ -667,6 +667,20 @@ export const translations = {
     floatingWhatsApp: {
       defaultText: "تحدث مع بيلدورا",
       hoverText: "دعنا نناقش مشروعك الآن"
+    },
+
+    // App & PWA Installation
+    app: {
+      installApp: "تثبيت التطبيق",
+      installTitle: "تطبيق بيلدورا على هاتفك",
+      installDesc: "احصل على تجربة سريعة وفورية، وتصفح متكامل كأي تطبيق موبايل أصلي، وتواصل بنقرة واحدة.",
+      btnInstall: "تثبيت التطبيق الآن",
+      btnLater: "لاحقاً",
+      directApk: "أو حمّل ملف APK المباشر للأندرويد",
+      iosHintTitle: "لمستخدمي الآيفون (iOS):",
+      iosHintDesc: "اضغط على زر المشاركة (Share) أسفل المتصفح ثم اختر 'إضافة إلى الشاشة الرئيسية' (Add to Home Screen).",
+      features: ["يعمل بدون إنترنت", "إشعارات وسرعة فائقة", "حجم خفيف جداً"],
+      appInstalled: "التطبيق مثبت لديك بالفعل"
     }
   },
 
@@ -984,6 +998,20 @@ export const translations = {
     floatingWhatsApp: {
       defaultText: "Chat with Buildora",
       hoverText: "Let's discuss your project"
+    },
+
+    // App & PWA Installation
+    app: {
+      installApp: "Install App",
+      installTitle: "BUILDORA Mobile App",
+      installDesc: "Experience ultra-fast loading, full offline access, native feel, and instant 1-tap WhatsApp consultation.",
+      btnInstall: "Install App Now",
+      btnLater: "Later",
+      directApk: "Or download direct Android APK",
+      iosHintTitle: "For iPhone (iOS) Users:",
+      iosHintDesc: "Tap the Share button at the bottom of Safari and select 'Add to Home Screen'.",
+      features: ["Works Offline", "Ultra Fast & Responsive", "Lightweight & Secure"],
+      appInstalled: "App already installed"
     }
   }
 };

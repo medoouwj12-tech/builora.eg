@@ -8,11 +8,12 @@ import {
   ArrowLeft,
   Sparkles,
   Calendar,
-  Globe
+  Globe,
+  Smartphone
 } from 'lucide-react';
 import WhatsAppIcon from './WhatsAppIcon';
 
-export default function Navbar({ onOpenConsultation }) {
+export default function Navbar({ onOpenConsultation, onOpenInstallModal }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -126,6 +127,16 @@ export default function Navbar({ onOpenConsultation }) {
               <span>{language === 'ar' ? 'English' : 'عربي'}</span>
             </button>
 
+            {/* Install App Button */}
+            <button
+              onClick={onOpenInstallModal}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold text-cyan-400 hover:text-cyan-200 bg-cyan-950/40 hover:bg-cyan-900/40 border border-cyan-500/30 hover:border-cyan-400/60 transition-all duration-200 shadow-sm"
+              title={t.app?.installApp || 'App'}
+            >
+              <Smartphone className="w-3.5 h-3.5 text-cyan-400" />
+              <span>{t.app?.installApp || 'App'}</span>
+            </button>
+
             {/* Consultation Quick Button */}
             <button
               onClick={onOpenConsultation}
@@ -221,6 +232,17 @@ export default function Navbar({ onOpenConsultation }) {
               >
                 <Globe className="w-4 h-4 text-cyan-400" />
                 <span>{language === 'ar' ? 'Switch to English' : 'التحويل للغة العربية'}</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onOpenInstallModal) onOpenInstallModal();
+                }}
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 text-xs font-bold text-cyan-300 bg-slate-900 border border-cyan-500/40 rounded-xl hover:bg-slate-800"
+              >
+                <Smartphone className="w-4 h-4 text-cyan-400" />
+                <span>{t.app?.installApp || 'Install App'}</span>
               </button>
 
               <button

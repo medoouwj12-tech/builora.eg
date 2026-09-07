@@ -1,0 +1,87 @@
+name: Build Android APK
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build & Package Android APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Node Dependencies
+        run: npm install
+
+      - name: Build Web Application (Vite)
+        run: npm run build
+
+      - name: Setup Java Development Kit (JDK 17)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: 17
+          cache: 'gradle'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Sync Capacitor Android Project
+        run: npx cap sync android
+
+      - name: Grant Execute Permission to Gradle Wrapper
+        run: chmod +x android/gradlew
+
+      - name: Build Android APK (Debug)
+        run: |
+          cd android
+          ./gradlew assembleDebug --stacktrace
+
+      - name: Rename APK Output
+        run: |
+          mkdir -p output
+          cp android/app/build/outputs/apk/debug/app-debug.apk output/Buildora-v1.0.0.apk
+
+      - name: Upload APK as Workflow Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Buildora-Android-APK
+          path: output/Buildora-v1.0.0.apk
+          retention-days: 30
+
+      - name: Create / Update GitHub Release with APK
+        uses: softprops/action-gh-release@v2
+        if: github.ref == 'refs/heads/main'
+        with:
+          tag_name: v1.0.0-apk
+          name: "BUILDORA Mobile Application v1.0.0 (APK)"
+          body: |
+            ### 📱 BUILDORA Official Android Application (APK)
+            
+            Welcome to the official mobile application release of **BUILDORA**.
+            
+            #### Features:
+            - 🚀 Ultra-fast native Android shell powered by Capacitor & Vite
+            - 🌐 Full Arabic (RTL) and English bilingual interface
+            - 💬 Direct 1-tap WhatsApp consultation integration (+201007466197)
+            - 📡 Offline cache & standalone performance
+            
+            #### Download:
+            Download `Buildora-v1.0.0.apk` below and install directly on your Android device!
+          files: output/Buildora-v1.0.0.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

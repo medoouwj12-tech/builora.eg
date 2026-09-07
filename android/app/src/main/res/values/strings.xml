@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Buildora</string>
+    <string name="title_activity_main">Buildora</string>
+    <string name="package_name">com.buildora.app</string>
+    <string name="custom_url_scheme">com.buildora.app</string>
+</resources>

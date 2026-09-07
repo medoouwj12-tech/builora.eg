@@ -1,0 +1,56 @@
+{
+  "name": "BUILDORA | Software & Programming",
+  "short_name": "BUILDORA",
+  "description": "High-Performance Websites, Web Applications & Custom Business Systems.",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#070B14",
+  "theme_color": "#070B14",
+  "orientation": "portrait",
+  "lang": "ar",
+  "dir": "auto",
+  "icons": [
+    {
+      "src": "/logo.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "ابدأ مشروعك",
+      "short_name": "مشروع جديد",
+      "description": "طلب تنفيذ مشروع جديد عبر واتساب",
+      "url": "/#booking",
+      "icons": [{ "src": "/logo.jpeg", "sizes": "192x192" }]
+    },
+    {
+      "name": "خدماتنا",
+      "short_name": "الخدمات",
+      "description": "استعراض خدمات البرمجة والحلول التقنية",
+      "url": "/#services",
+      "icons": [{ "src": "/logo.jpeg", "sizes": "192x192" }]
+    },
+    {
+      "name": "اتصل بنا",
+      "short_name": "تواصل معنا",
+      "description": "التواصل المباشر مع بيلدورا عبر واتساب",
+      "url": "/#contact",
+      "icons": [{ "src": "/logo.jpeg", "sizes": "192x192" }]
+    }
+  ]
+}
