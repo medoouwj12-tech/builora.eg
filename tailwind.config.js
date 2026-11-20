@@ -8,6 +8,26 @@ export default {
   theme: {
     extend: {
       colors: {
+        ink: {
+          950: '#03050A',
+          900: '#070A12',
+          850: '#0A0F1C',
+          800: '#0E1526',
+          700: '#162036',
+        },
+        brand: {
+          50: '#EEF4FF',
+          100: '#DCE8FF',
+          200: '#B9D1FF',
+          300: '#86B0FF',
+          400: '#4D86FF',
+          500: '#1F63FF',
+          600: '#0B4EEB',
+          700: '#0A3EC0',
+          800: '#0E3596',
+          900: '#112E74',
+          cyan: '#22D3EE',
+        },
         buildora: {
           darkest: '#030712',
           dark: '#070B14',
@@ -44,6 +64,9 @@ export default {
         'shimmer': 'shimmer 3s linear infinite',
         'spin-slow': 'spin 12s linear infinite',
         'glow-pulse': 'glowPulse 3s ease-in-out infinite',
+        'marquee': 'marquee 40s linear infinite',
+        'marquee-rtl': 'marqueeRtl 40s linear infinite',
+        'dash': 'dash 20s linear infinite',
       },
       keyframes: {
         float: {
@@ -53,6 +76,17 @@ export default {
         shimmer: {
           '0%': { backgroundPosition: '-200% 0' },
           '100%': { backgroundPosition: '200% 0' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        marqueeRtl: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(50%)' },
+        },
+        dash: {
+          to: { strokeDashoffset: '-200' },
         },
         glowPulse: {
           '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },

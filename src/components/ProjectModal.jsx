@@ -1,3 +1,4 @@
+import ProjectScene from './ProjectScenes';
 import React, { useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { 
@@ -63,6 +64,11 @@ export default function ProjectModal({ project, isOpen, onClose, onStartSimilarP
               {project.badge}
             </span>
           )}
+        </div>
+
+        {/* Project cover */}
+        <div className="mb-6 rounded-2xl overflow-hidden ring-1 ring-white/10">
+          <ProjectScene project={project} className="aspect-[16/9]" />
         </div>
 
         {/* Project Title & Client Meta */}

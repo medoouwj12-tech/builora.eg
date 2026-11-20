@@ -1,185 +1,157 @@
 import React from 'react';
+import { Phone, Mail, MapPin, Clock, Lock, Rocket, Code2, ShieldCheck, FileCode, Headphones } from 'lucide-react';
 import { siteConfig } from '../data/siteConfig';
+import { servicesData } from '../data/servicesData';
 import { useLanguage } from '../context/LanguageContext';
-import { 
-  Phone, 
-  Mail, 
-  ArrowUp
-} from 'lucide-react';
 import WhatsAppIcon from './WhatsAppIcon';
+import { SocialIcon, socialOrder } from './SocialIcons';
 
-export default function Footer() {
-  const { language, t } = useLanguage();
+const badgeIcons = [Code2, ShieldCheck, FileCode, Headphones];
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+export default function Footer({ onOpenConsultation }) {
+  const { language, t, h } = useLanguage();
+  const services =
+    language === 'ar' && t.services.items?.length
+      ? t.services.items.map((s) => s.title)
+      : servicesData.map((s) => s.title);
+
+  const quick = [
+    { href: '#home', label: h.nav.home },
+    { href: '#services', label: h.nav.services },
+    { href: '#projects', label: h.nav.projects },
+    { href: '#about', label: h.nav.about },
+    { href: '#process', label: h.nav.process },
+    { href: '#faq', label: h.nav.faq }
+  ];
+
+  const c = siteConfig.contact;
 
   return (
-    <footer className="relative bg-[#03060D] border-t border-cyan-500/15 pt-16 pb-12 overflow-hidden text-xs text-start">
-      {/* Background radial glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-cyan-600/5 blur-[160px] pointer-events-none" />
+    <footer id="contact" className="relative bg-ink-950 text-white overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(31,99,255,0.18),transparent_60%)]" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Multi-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800/80">
-          
-          {/* Column 1: Brand & Bio (4 cols) */}
-          <div className="lg:col-span-4 space-y-4">
-            <a href="#home" className="flex items-center gap-3 group focus:outline-none">
-              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center">
-                <img 
-                  src="/logo.jpeg" 
-                  alt="BUILDORA" 
-                  className="w-8 h-8 rounded-lg object-contain"
-                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                />
-              </div>
-              <div>
-                <span className="text-xl font-extrabold tracking-wider text-white font-sans flex items-center gap-1">
-                  BUILDORA
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                </span>
-                <span className="text-[9px] font-mono tracking-widest text-cyan-400 block uppercase">
-                  {t.nav.softwareSubtitle}
-                </span>
-              </div>
-            </a>
+      {/* CTA band */}
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+        <div className="relative rounded-3xl border border-white/10 bg-gradient-to-br from-ink-850 to-ink-900 px-6 py-12 sm:py-14 text-center overflow-hidden">
+          <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-brand-500/20 blur-[100px] rounded-full" />
+          <Rocket className="hidden sm:block absolute end-10 top-1/2 -translate-y-1/2 w-16 h-16 text-brand-400 rotate-[-30deg] animate-float" />
+          <h2 className="relative text-2xl sm:text-3xl font-extrabold">{h.cta.title}</h2>
+          <p className="relative mt-3 text-slate-300 inline-flex items-center gap-2">
+            <Lock className="w-4 h-4 text-brand-cyan" />
+            {h.cta.desc}
+          </p>
+          <div className="relative mt-7">
+            <button onClick={onOpenConsultation} className="btn-primary">
+              <WhatsAppIcon className="w-4 h-4" />
+              {h.cta.btn}
+            </button>
+          </div>
+        </div>
+      </div>
 
-            <p className="text-slate-400 leading-relaxed text-xs max-w-sm">
-              {t.footer.desc}
-            </p>
-
-            <div className="pt-2">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 text-[11px] font-mono" dir="ltr">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>HOTLINE: {siteConfig.contact.phoneDisplay}</span>
-              </span>
+      {/* Columns */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div>
+          <div className="flex items-center gap-2.5">
+            <img src="/logo.jpeg" alt="BUILDORA" className="w-11 h-11 rounded-xl object-cover" />
+            <div dir="ltr">
+              <div className="font-extrabold tracking-wide text-lg">BUILDORA</div>
+              <div className="text-[10px] text-brand-300">Software &amp; Programming</div>
             </div>
           </div>
-
-          {/* Column 2: Company Navigation (2 cols) */}
-          <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider font-mono">{t.footer.colCompany}</h4>
-            <ul className="space-y-2 text-slate-400">
-              <li><a href="#home" className="hover:text-cyan-400 transition-colors">{t.nav.home}</a></li>
-              <li><a href="#about" className="hover:text-cyan-400 transition-colors">{t.nav.about}</a></li>
-              <li><a href="#projects" className="hover:text-cyan-400 transition-colors">{t.nav.projects}</a></li>
-              <li><a href="#services" className="hover:text-cyan-400 transition-colors">{t.nav.services}</a></li>
-              <li><a href="#process" className="hover:text-cyan-400 transition-colors">{t.nav.process}</a></li>
-              <li><a href="#why-us" className="hover:text-cyan-400 transition-colors">{t.nav.whyUs}</a></li>
-              <li><a href="#contact" className="hover:text-cyan-400 transition-colors">{t.nav.contact}</a></li>
-            </ul>
-          </div>
-
-          {/* Column 3: Core Services (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider font-mono">{t.footer.colServices}</h4>
-            <ul className="space-y-2 text-slate-400">
-              <li><a href="#services" className="hover:text-cyan-400 transition-colors">{language === 'ar' ? 'تطوير مواقع الويب' : 'Website Development'}</a></li>
-              <li><a href="#services" className="hover:text-cyan-400 transition-colors">{language === 'ar' ? 'المتاجر الإلكترونية' : 'E-Commerce Development'}</a></li>
-              <li><a href="#services" className="hover:text-cyan-400 transition-colors">{language === 'ar' ? 'أنظمة إدارة الشركات' : 'Custom Business Systems'}</a></li>
-              <li><a href="#services" className="hover:text-cyan-400 transition-colors">{language === 'ar' ? 'أنظمة الحجز والمواعيد' : 'Booking Systems'}</a></li>
-              <li><a href="#services" className="hover:text-cyan-400 transition-colors">{language === 'ar' ? 'قوائم الطعام الرقمية QR' : 'Restaurant Digital Menus'}</a></li>
-              <li><a href="#services" className="hover:text-cyan-400 transition-colors">{language === 'ar' ? 'لوحات التحكم والبيانات' : 'Admin Dashboards'}</a></li>
-              <li><a href="#services" className="hover:text-cyan-400 transition-colors">{language === 'ar' ? 'تطبيقات الويب السحابية' : 'Web Applications & SaaS'}</a></li>
-            </ul>
-          </div>
-
-          {/* Column 4: Contact & Socials (3 cols) */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider font-mono">{t.footer.colChannels}</h4>
-            
-            <div className="space-y-2 text-slate-300">
-              <a 
-                href={siteConfig.contact.whatsappUrl} 
-                target="_blank" 
+          <p className="mt-4 text-sm text-slate-400 leading-relaxed">{h.footer.desc}</p>
+          <div className="mt-5 flex gap-2">
+            {socialOrder.map((s) => (
+              <a
+                key={s.key}
+                href={siteConfig.socialLinks[s.key]}
+                target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors"
-                dir="ltr"
+                aria-label={s.key}
+                className={`w-9 h-9 rounded-full ${s.bg} flex items-center justify-center hover:scale-110 transition-transform`}
               >
-                <WhatsAppIcon className="w-4 h-4 shrink-0" />
-                <span>WhatsApp: {siteConfig.contact.phoneDisplay}</span>
+                <SocialIcon name={s.key} />
               </a>
+            ))}
+          </div>
+        </div>
 
-              <a 
-                href={`tel:${siteConfig.contact.phoneTel}`}
-                className="flex items-center gap-2 hover:text-cyan-400 transition-colors"
-                dir="ltr"
-              >
-                <Phone className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>Call: {siteConfig.contact.phoneDisplay}</span>
+        <div>
+          <h3 className="font-extrabold mb-4">{h.footer.services}</h3>
+          <ul className="space-y-2.5">
+            {services.slice(0, 7).map((s, i) => (
+              <li key={i}>
+                <a href="#services" className="text-sm text-slate-400 hover:text-brand-300 transition-colors">{s}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="font-extrabold mb-4">{h.footer.quick}</h3>
+          <ul className="space-y-2.5">
+            {quick.map((q) => (
+              <li key={q.href}>
+                <a href={q.href} className="text-sm text-slate-400 hover:text-brand-300 transition-colors">{q.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="font-extrabold mb-4">{h.footer.contact}</h3>
+          <ul className="space-y-3 text-sm">
+            <li>
+              <a href={`tel:${c.phoneTel}`} className="flex items-center gap-3 text-slate-300 hover:text-white">
+                <span className="w-8 h-8 rounded-full bg-brand-500 flex items-center justify-center"><Phone className="w-4 h-4" /></span>
+                <span dir="ltr">{c.phoneDisplay}</span>
               </a>
-
-              <a 
-                href={`mailto:${siteConfig.contact.email}`}
-                className="flex items-center gap-2 hover:text-cyan-400 transition-colors"
-                dir="ltr"
-              >
-                <Mail className="w-4 h-4 text-blue-400 shrink-0" />
-                <span>{siteConfig.contact.email}</span>
+            </li>
+            <li>
+              <a href={c.whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-slate-300 hover:text-white">
+                <WhatsAppIcon variant="filled" className="w-8 h-8" />
+                <span>WhatsApp</span>
               </a>
-            </div>
+            </li>
+            <li>
+              <a href={`mailto:${c.email}`} className="flex items-center gap-3 text-slate-300 hover:text-white">
+                <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center"><Mail className="w-4 h-4" /></span>
+                <span>{c.email}</span>
+              </a>
+            </li>
+            <li className="flex items-center gap-3 text-slate-300">
+              <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center"><MapPin className="w-4 h-4" /></span>
+              <span>{language === 'ar' ? 'القاهرة، مصر' : c.address}</span>
+            </li>
+            <li className="flex items-center gap-3 text-slate-400 text-xs">
+              <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center"><Clock className="w-4 h-4" /></span>
+              <span>{language === 'ar' ? 'السبت – الخميس: 10 ص – 8 م' : c.workingHours}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-            {/* Social Media Links */}
-            <div className="pt-2">
-              <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">{t.footer.socialTitle}</div>
-              <div className="flex items-center gap-2">
-                <a
-                  href={siteConfig.socialLinks.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 transition-colors"
-                >
-                  Facebook
-                </a>
-                <a
-                  href={siteConfig.socialLinks.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 transition-colors"
-                >
-                  Instagram
-                </a>
-                <a
-                  href={siteConfig.socialLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 transition-colors"
-                >
-                  LinkedIn
-                </a>
-                <a
-                  href={siteConfig.socialLinks.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 transition-colors"
-                >
-                  GitHub
-                </a>
+      {/* Badges */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 grid grid-cols-2 lg:grid-cols-4 gap-3">
+        {h.footer.badges.map((b, i) => {
+          const Icon = badgeIcons[i];
+          return (
+            <div key={i} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3">
+              <Icon className="w-6 h-6 text-brand-400 shrink-0" />
+              <div>
+                <div className="text-sm font-extrabold">{b.t}</div>
+                <div className="text-[11px] text-slate-400">{b.s}</div>
               </div>
             </div>
+          );
+        })}
+      </div>
 
-          </div>
-
+      <div className="relative border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+          <span>© {new Date().getFullYear()} BUILDORA — {h.footer.rights}</span>
+          <span>{h.footer.madeIn} 💙</span>
         </div>
-
-        {/* Bottom Copyright & Back to Top */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-xs">
-          <div>
-            © {new Date().getFullYear()} <strong className="text-slate-400">{siteConfig.companyName}</strong>. {t.footer.copyright}
-          </div>
-
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-cyan-400 border border-slate-800 transition-colors"
-          >
-            <span>{t.footer.backToTop}</span>
-            <ArrowUp className="w-3.5 h-3.5" />
-          </button>
-        </div>
-
       </div>
     </footer>
   );

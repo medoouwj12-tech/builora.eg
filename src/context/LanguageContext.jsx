@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { translations } from '../data/translations';
+import { homeContent } from '../data/homeContent';
 
 const LanguageContext = createContext();
 
@@ -42,9 +43,10 @@ export function LanguageProvider({ children }) {
   }, [language, isRTL]);
 
   const t = translations[language] || translations.ar;
+  const h = homeContent[language] || homeContent.ar;
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage, isRTL, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage, isRTL, t, h }}>
       {children}
     </LanguageContext.Provider>
   );

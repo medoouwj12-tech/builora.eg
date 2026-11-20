@@ -28,8 +28,8 @@ export const siteConfig = {
 
   socialLinks: {
     whatsapp: "https://wa.me/201007466197",
-    facebook: "https://facebook.com/buildora.tech",
-    instagram: "https://instagram.com/buildora.tech",
+    facebook: "https://www.facebook.com/share/1C2LbwU41n/",
+    instagram: "https://www.instagram.com/buildorra.eg/",
     linkedin: "https://linkedin.com/company/buildora",
     github: "https://github.com/buildora-tech"
   },
