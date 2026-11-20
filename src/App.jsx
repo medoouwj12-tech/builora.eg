@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
+import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -25,7 +26,7 @@ function MainLayout() {
   const openConsultation = () => setConsultationOpen(true);
 
   return (
-    <div className="relative min-h-screen bg-[#F4F6FB] text-slate-900 selection:bg-brand-500 selection:text-white">
+    <div className="relative min-h-screen bg-[#F4F6FB] dark:bg-ink-900 text-slate-900 dark:text-slate-100 transition-colors duration-300 selection:bg-brand-500 selection:text-white">
       <Navbar onOpenConsultation={openConsultation} onOpenInstallModal={() => setInstallModalOpen(true)} />
 
       <main className="relative">
@@ -61,8 +62,10 @@ function MainLayout() {
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <MainLayout />
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <MainLayout />
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }

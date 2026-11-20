@@ -31,7 +31,7 @@ export default function Services({ onSelectServiceForBooking }) {
       : servicesData;
 
   return (
-    <section id="services" className="relative py-20 lg:py-24 bg-[#F4F6FB]">
+    <section id="services" className="relative py-20 lg:py-24 bg-[#F4F6FB] dark:bg-ink-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="section-title">{h.services.title}</h2>
@@ -44,12 +44,12 @@ export default function Services({ onSelectServiceForBooking }) {
             return (
               <div key={s.id} className="light-card light-card-hover p-7 text-center flex flex-col items-center group">
                 <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${iconTints[i % iconTints.length]} p-[2px] mb-5`}>
-                  <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
+                  <div className="w-full h-full rounded-full bg-white dark:bg-ink-850 flex items-center justify-center">
                     <Icon className="w-7 h-7 text-brand-600 group-hover:scale-110 transition-transform" />
                   </div>
                 </div>
-                <h3 className="text-lg font-extrabold text-ink-900">{s.title}</h3>
-                <p className="mt-3 text-sm text-slate-500 leading-relaxed flex-1">{s.shortDescription}</p>
+                <h3 className="text-lg font-extrabold text-ink-900 dark:text-white">{s.title}</h3>
+                <p className="mt-3 text-sm text-slate-500 dark:text-slate-400 leading-relaxed flex-1">{s.shortDescription}</p>
                 <button onClick={() => setSelectedService(s)} className="pill-more mt-5">
                   {h.services.more}
                   <Arrow className="w-3.5 h-3.5" />

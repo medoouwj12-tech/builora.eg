@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Download, Globe } from 'lucide-react';
+import { Menu, X, Download, Globe, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 import { siteConfig } from '../data/siteConfig';
 import { useLanguage } from '../context/LanguageContext';
 import { SocialIcon, socialOrder } from './SocialIcons';
 
 export default function Navbar({ onOpenConsultation, onOpenInstallModal }) {
   const { h, language, toggleLanguage } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('home');
@@ -109,6 +111,14 @@ export default function Navbar({ onOpenConsultation, onOpenInstallModal }) {
           </div>
 
           <div className="flex items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              aria-label={theme === 'dark' ? 'Light mode' : 'Dark mode'}
+              title={theme === 'dark' ? (language === 'ar' ? 'الوضع الفاتح' : 'Light mode') : language === 'ar' ? 'الوضع الداكن' : 'Dark mode'}
+              className="w-9 h-9 rounded-full border border-white/15 text-white flex items-center justify-center hover:bg-white/10 transition-colors"
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-300" /> : <Moon className="w-4 h-4" />}
+            </button>
             <button
               onClick={toggleLanguage}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/15 text-white text-xs font-bold hover:bg-white/10 transition-colors"

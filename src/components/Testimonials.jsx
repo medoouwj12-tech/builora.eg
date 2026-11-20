@@ -8,15 +8,15 @@ export default function Testimonials() {
   const items = language === 'ar' && t.testimonials.items?.length ? t.testimonials.items : siteConfig.testimonials;
 
   return (
-    <section id="testimonials" className="py-20 lg:py-24 bg-[#F4F6FB]">
+    <section id="testimonials" className="py-20 lg:py-24 bg-[#F4F6FB] dark:bg-ink-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm text-sm font-bold text-ink-900">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-ink-850 border border-slate-200 dark:border-white/10 shadow-sm text-sm font-bold text-ink-900 dark:text-white">
             <span className="text-amber-400 tracking-tight">★★★★★</span>
             <span>5.0</span>
           </span>
           <h2 className="section-title mt-5">{h.testimonials.title}</h2>
-          <p className="mt-3 text-slate-500">{h.testimonials.subtitle}</p>
+          <p className="mt-3 text-slate-500 dark:text-slate-400">{h.testimonials.subtitle}</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-5 lg:gap-6">
@@ -28,8 +28,8 @@ export default function Testimonials() {
                     {it.name.replace('د. ', '')[0]}
                   </div>
                   <div>
-                    <div className="font-extrabold text-ink-900 text-sm">{it.name}</div>
-                    <div className="text-xs text-slate-500">{it.company}</div>
+                    <div className="font-extrabold text-ink-900 dark:text-white text-sm">{it.name}</div>
+                    <div className="text-xs text-slate-500 dark:text-slate-400">{it.company}</div>
                   </div>
                 </div>
                 <Quote className="w-6 h-6 text-brand-100" />
@@ -39,8 +39,8 @@ export default function Testimonials() {
                   <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                 ))}
               </div>
-              <p className="mt-3 text-sm text-slate-600 leading-relaxed flex-1">{it.content}</p>
-              <div className="mt-4 pt-4 border-t border-slate-100 text-xs font-bold text-brand-600">{it.projectType}</div>
+              <p className="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed flex-1">{it.content}</p>
+              <div className="mt-4 pt-4 border-t border-slate-100 dark:border-white/10 text-xs font-bold text-brand-600">{it.projectType}</div>
             </div>
           ))}
         </div>
