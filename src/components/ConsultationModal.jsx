@@ -199,7 +199,7 @@ Please confirm our consultation slot.`;
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              placeholder="e.g. 01007466197"
+              placeholder="e.g. 01157554462"
               className={`w-full px-4 py-2.5 rounded-xl bg-slate-900 border ${
                 errors.phone ? 'border-rose-500' : 'border-slate-800 focus:border-cyan-400'
               } text-white text-sm focus:outline-none`}

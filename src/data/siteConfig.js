@@ -16,10 +16,10 @@ export const siteConfig = {
   
   // Contact & Social Details
   contact: {
-    phoneDisplay: "01007466197",
-    phoneTel: "+201007466197",
-    whatsappNumber: "201007466197",
-    whatsappUrl: "https://wa.me/201007466197",
+    phoneDisplay: "01157554462",
+    phoneTel: "+201157554462",
+    whatsappNumber: "201157554462",
+    whatsappUrl: "https://wa.me/201157554462",
     email: "contact@buildora.net",
     address: "Cairo, Egypt",
     workingHours: "Saturday – Thursday: 10:00 AM – 8:00 PM (Cairo Time)",
@@ -27,7 +27,7 @@ export const siteConfig = {
   },
 
   socialLinks: {
-    whatsapp: "https://wa.me/201007466197",
+    whatsapp: "https://wa.me/201157554462",
     facebook: "https://www.facebook.com/share/1C2LbwU41n/",
     instagram: "https://www.instagram.com/buildorra.eg/",
     linkedin: "https://linkedin.com/company/buildora",
